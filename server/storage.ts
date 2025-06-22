@@ -105,9 +105,11 @@ export class MemStorage implements IStorage {
   async createSignal(insertSignal: InsertSignal): Promise<Signal> {
     const id = this.currentSignalId++;
     const signal: Signal = { 
-      ...insertSignal, 
+      ...insertSignal,
       id, 
-      createdAt: new Date() 
+      createdAt: new Date(),
+      entryPrice: insertSignal.entryPrice || (Math.random() * 1000 + 1).toFixed(5),
+      status: insertSignal.status || 'active'
     };
     this.signals.set(id, signal);
     return signal;
@@ -133,7 +135,12 @@ export class MemStorage implements IStorage {
 
   async createPlatform(insertPlatform: InsertPlatform): Promise<Platform> {
     const id = this.currentPlatformId++;
-    const platform: Platform = { ...insertPlatform, id };
+    const platform: Platform = { 
+      ...insertPlatform, 
+      id,
+      isActive: insertPlatform.isActive ?? true,
+      successRate: insertPlatform.successRate || null
+    };
     this.platforms.set(platform.name, platform);
     return platform;
   }

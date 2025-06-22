@@ -6,6 +6,8 @@ import Performance from "@/components/performance";
 import SignalHistory from "@/components/signal-history";
 import CTA from "@/components/cta";
 import Footer from "@/components/footer";
+import LiveNotifications from "@/components/live-notifications";
+import BuySellSignals from "@/components/buy-sell-signals";
 
 export default function Home() {
   return (
@@ -14,10 +16,12 @@ export default function Home() {
       <Hero />
       <Platforms />
       <SignalsDashboard />
+      <BuySellSignals />
       <Performance />
       <SignalHistory />
       <CTA />
       <Footer />
+      <LiveNotifications />
     </div>
   );
 }
