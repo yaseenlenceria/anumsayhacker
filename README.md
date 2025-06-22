@@ -1,69 +1,65 @@
 # Trading Signals Dashboard
 
-A full-stack trading signals application with real-time signals for binary options trading platforms.
+A professional trading signals platform providing real-time binary options signals across multiple platforms.
 
 ## Features
 
-- Real-time trading signals for multiple platforms (Quotex, Pocket Option, Binomo, Olymp, IQ Option, Expert Option)
-- Modern dark-themed UI with professional dashboard
-- Multi-currency pair support (USD/BRL, USD/PKR, EUR/USD, etc.)
-- Signal strength indicators and direction (CALL/PUT)
-- Platform-specific success rate tracking
-- Free trial system with access key authentication
-
-## Tech Stack
-
-- **Frontend**: React 18 + TypeScript + Vite
-- **Backend**: Node.js + Express + TypeScript
-- **Database**: PostgreSQL with Drizzle ORM
-- **UI**: Tailwind CSS + Radix UI components
-- **Icons**: Lucide React
+- Real-time trading signals for 6+ platforms
+- Advanced analytics and success rate tracking
+- Multi-currency pair support
+- Professional dark-themed UI
+- Responsive design for all devices
 
 ## Deployment
 
-### For Netlify
+### Netlify Deployment
 
-1. Push to GitHub repository
-2. Connect repository to Netlify
-3. Set environment variables in Netlify dashboard:
-   - `DATABASE_URL` - Your PostgreSQL connection string
-4. Deploy will use `netlify.toml` configuration
+1. **Build Settings:**
+   - Build command: `npm run build`
+   - Publish directory: `dist/public`
+   - Functions directory: `netlify/functions`
 
-### Environment Variables Required
+2. **Environment Variables:**
+   No environment variables required for basic functionality.
 
-- `DATABASE_URL` - PostgreSQL connection string
+3. **Redirects:**
+   - API routes: `/api/*` → `/.netlify/functions/server/:splat`
+   - SPA fallback: `/*` → `/index.html`
 
-## Local Development
+### Local Development
 
 ```bash
-# Install dependencies
 npm install
-
-# Set up database
-npm run db:push
-
-# Start development server
 npm run dev
 ```
 
-## Project Structure
+The application will be available at `http://localhost:5000`
 
-```
-├── client/           # React frontend
-├── server/           # Express backend
-├── shared/           # Shared types and schemas
-├── netlify/          # Netlify functions
-└── dist/             # Build output
-```
+## Architecture
+
+- **Frontend**: React 18 + TypeScript + Vite
+- **Backend**: Express.js with serverless functions for Netlify
+- **UI**: Tailwind CSS + Radix UI components
+- **State**: TanStack Query for server state management
+
+## Supported Platforms
+
+- Quotex
+- Pocket Option
+- Binomo
+- Olymp Trade
+- IQ Option
+- Expert Option
 
 ## API Endpoints
 
-- `GET /api/platforms` - Get trading platforms
-- `GET /api/signals` - Get current signals
-- `GET /api/stats` - Get dashboard statistics
-- `POST /api/auth/validate` - Validate access key
+- `GET /api/platforms` - List all trading platforms
+- `GET /api/signals` - Get recent trading signals
+- `POST /api/signals/generate` - Generate new signal
+- `GET /api/stats` - Get platform statistics
 - `POST /api/auth/free-trial` - Start free trial
+- `POST /api/auth/validate` - Validate access key
 
 ## License
 
-MIT
+MIT License

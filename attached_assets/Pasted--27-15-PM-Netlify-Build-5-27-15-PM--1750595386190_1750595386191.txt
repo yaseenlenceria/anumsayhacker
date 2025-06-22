@@ -1,0 +1,81 @@
+:27:15 PM: Netlify Build                                                 
+5:27:15 PM: ────────────────────────────────────────────────────────────────
+5:27:15 PM: ​
+5:27:15 PM: ❯ Version
+5:27:15 PM:   @netlify/build 33.4.6
+5:27:15 PM: ​
+5:27:15 PM: ❯ Flags
+5:27:15 PM:   accountId: 66ceebfc0e8331217ceab1b5
+5:27:15 PM:   baseRelDir: true
+5:27:15 PM:   buildId: 6857f602df45f60008a6880d
+5:27:15 PM:   deployId: 6857f602df45f60008a6880f
+5:27:15 PM: ​
+5:27:15 PM: ❯ Current directory
+5:27:15 PM:   /opt/build/repo
+5:27:15 PM: ​
+5:27:15 PM: ❯ Config file
+5:27:15 PM:   /opt/build/repo/netlify.toml
+5:27:15 PM: ​
+5:27:15 PM: ❯ Context
+5:27:15 PM:   production
+5:27:15 PM: ​
+5:27:15 PM: build.command from netlify.toml                               
+5:27:15 PM: ────────────────────────────────────────────────────────────────
+5:27:15 PM: ​
+5:27:15 PM: $ npm run build && npm run build:server
+5:27:15 PM: > rest-express@1.0.0 build
+5:27:15 PM: > vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
+5:27:15 PM: vite v5.4.19 building for production...
+5:27:15 PM: transforming...
+5:27:16 PM: Browserslist: browsers data (caniuse-lite) is 8 months old. Please run:
+5:27:16 PM:   npx update-browserslist-db@latest
+5:27:16 PM:   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+5:27:18 PM: ✓ 1732 modules transformed.
+5:27:18 PM: rendering chunks...
+5:27:18 PM: computing gzip size...
+5:27:18 PM: ../dist/public/index.html                   0.63 kB │ gzip:   0.38 kB
+5:27:18 PM: ../dist/public/assets/index-CQWEuTJ3.css   76.48 kB │ gzip:  12.87 kB
+5:27:18 PM: ../dist/public/assets/index-Gw-W5DDV.js   422.32 kB │ gzip: 123.58 kB
+5:27:18 PM: ✓ built in 2.97s
+5:27:18 PM:   dist/index.js  20.4kb
+5:27:18 PM: ⚡ Done in 4ms
+5:27:19 PM: Failed during stage 'building site': Build script returned non-zero exit code: 2 (https://ntl.fyi/exit-code-2)
+5:27:19 PM: npm error Missing script: "build:server"
+5:27:19 PM: npm error
+5:27:19 PM: npm error To see a list of scripts, run:
+5:27:19 PM: npm error   npm run
+5:27:19 PM: npm error A complete log of this run can be found in: /opt/buildhome/.npm/_logs/2025-06-22T12_27_18_967Z-debug-0.log
+5:27:19 PM: ​
+5:27:19 PM: "build.command" failed                                        
+5:27:19 PM: ────────────────────────────────────────────────────────────────
+5:27:19 PM: ​
+5:27:19 PM:   Error message
+5:27:19 PM:   Command failed with exit code 1: npm run build && npm run build:server (https://ntl.fyi/exit-code-1)
+5:27:19 PM: ​
+5:27:19 PM:   Error location
+5:27:19 PM:   In build.command from netlify.toml:
+5:27:19 PM:   npm run build && npm run build:server
+5:27:19 PM: ​
+5:27:19 PM:   Resolved config
+5:27:19 PM:   build:
+5:27:19 PM:     command: npm run build && npm run build:server
+5:27:19 PM:     commandOrigin: config
+5:27:19 PM:     environment:
+5:27:19 PM:       - NODE_VERSION
+5:27:19 PM:     publish: /opt/build/repo/dist/public
+5:27:19 PM:     publishOrigin: config
+5:27:19 PM:   functions:
+5:27:19 PM:     '*':
+5:27:19 PM:       node_bundler: esbuild
+5:27:19 PM:   functionsDirectory: /opt/build/repo/netlify/functions
+5:27:19 PM:   redirects:
+5:27:19 PM:     - from: /api/*
+      status: 200
+      to: /.netlify/functions/server/:splat
+    - from: /*
+      status: 200
+      to: /index.html
+  redirectsOrigin: config
+5:27:19 PM: Build failed due to a user error: Build script returned non-zero exit code: 2
+5:27:19 PM: Failing build: Failed to build site
+5:27:19 PM: Finished processing build request in 18.079s
