@@ -1,9 +1,82 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
+import { authStorage } from "./auth-storage";
 import { insertSignalSchema } from "@shared/schema";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Auth endpoints
+  app.post("/api/auth/validate", async (req, res) => {
+    try {
+      const { accessKey } = req.body;
+      const userAgent = req.headers['user-agent'];
+      const ipAddress = req.ip || req.connection.remoteAddress;
+      
+      const validKey = await authStorage.validateAccessKey(accessKey, userAgent, ipAddress);
+      
+      if (validKey) {
+        res.json({ success: true, message: "Access granted" });
+      } else {
+        res.status(401).json({ success: false, message: "Invalid or expired access key" });
+      }
+    } catch (error) {
+      console.error("Error validating access key:", error);
+      res.status(500).json({ success: false, message: "Server error" });
+    }
+  });
+
+  app.post("/api/auth/verify", async (req, res) => {
+    try {
+      const { accessKey } = req.body;
+      const validKey = await authStorage.validateAccessKey(accessKey);
+      
+      if (validKey) {
+        res.json({ success: true });
+      } else {
+        res.status(401).json({ success: false });
+      }
+    } catch (error) {
+      console.error("Error verifying access key:", error);
+      res.status(500).json({ success: false });
+    }
+  });
+
+  // Admin endpoints
+  app.get("/api/admin/keys", async (req, res) => {
+    try {
+      const keys = await authStorage.getAllAccessKeys();
+      res.json(keys);
+    } catch (error) {
+      console.error("Error fetching access keys:", error);
+      res.status(500).json({ message: "Failed to fetch access keys" });
+    }
+  });
+
+  app.post("/api/admin/keys/generate", async (req, res) => {
+    try {
+      const { description, expiresAt } = req.body;
+      const accessKey = await authStorage.generateAccessKey(
+        description,
+        expiresAt ? new Date(expiresAt) : undefined
+      );
+      res.json(accessKey);
+    } catch (error) {
+      console.error("Error generating access key:", error);
+      res.status(500).json({ message: "Failed to generate access key" });
+    }
+  });
+
+  app.post("/api/admin/keys/deactivate", async (req, res) => {
+    try {
+      const { key } = req.body;
+      const success = await authStorage.deactivateAccessKey(key);
+      res.json({ success });
+    } catch (error) {
+      console.error("Error deactivating access key:", error);
+      res.status(500).json({ message: "Failed to deactivate access key" });
+    }
+  });
+
   // Get all platforms
   app.get("/api/platforms", async (_req, res) => {
     try {
