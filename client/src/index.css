@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --background: hsl(0, 0%, 10%);
+  --foreground: hsl(0, 0%, 95%);
+  --muted: hsl(0, 0%, 17%);
+  --muted-foreground: hsl(0, 0%, 60%);
+  --popover: hsl(0, 0%, 17%);
+  --popover-foreground: hsl(0, 0%, 95%);
+  --card: hsl(0, 0%, 17%);
+  --card-foreground: hsl(0, 0%, 95%);
+  --border: hsl(0, 0%, 25%);
+  --input: hsl(0, 0%, 25%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(0, 0%, 17%);
+  --secondary-foreground: hsl(0, 0%, 95%);
+  --accent: hsl(0, 0%, 17%);
+  --accent-foreground: hsl(0, 0%, 95%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(60, 9%, 98%);
+  --ring: hsl(0, 0%, 83%);
+  --radius: 0.5rem;
+  
+  /* Custom colors for trading */
+  --signal-bull: hsl(142, 100%, 50%);
+  --signal-bear: hsl(348, 100%, 64%);
+  --signal-neutral: hsl(35, 100%, 56%);
+  --dark-primary: hsl(0, 0%, 10%);
+  --dark-secondary: hsl(0, 0%, 17%);
+  --dark-tertiary: hsl(0, 0%, 25%);
+}
+
+.dark {
+  --background: hsl(0, 0%, 3%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(0, 0%, 15%);
+  --muted-foreground: hsl(0, 0%, 64%);
+  --popover: hsl(0, 0%, 3%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(0, 0%, 3%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(0, 0%, 15%);
+  --input: hsl(0, 0%, 15%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(0, 0%, 15%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(0, 0%, 15%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62%, 30%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(0, 0%, 83%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+    background: var(--dark-primary);
+    color: hsl(0, 0%, 95%);
+  }
+}
+
+@layer utilities {
+  .signal-bull {
+    color: var(--signal-bull);
+    background-color: var(--signal-bull);
+  }
+  
+  .signal-bear {
+    color: var(--signal-bear);
+    background-color: var(--signal-bear);
+  }
+  
+  .bg-dark-primary {
+    background-color: var(--dark-primary);
+  }
+  
+  .bg-dark-secondary {
+    background-color: var(--dark-secondary);
+  }
+  
+  .bg-dark-tertiary {
+    background-color: var(--dark-tertiary);
+  }
+  
+  .text-signal-bull {
+    color: var(--signal-bull);
+  }
+  
+  .text-signal-bear {
+    color: var(--signal-bear);
+  }
+  
+  .text-signal-neutral {
+    color: var(--signal-neutral);
+  }
+}
