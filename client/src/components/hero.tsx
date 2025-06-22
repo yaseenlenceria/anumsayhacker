@@ -9,6 +9,21 @@ export default function Hero() {
     queryKey: ['/api/stats'],
   });
 
+  // Calculate slowly increasing user count
+  const getActiveUsers = () => {
+    const baseUsers = 2400;
+    const targetUsers = 5000;
+    const monthsToTarget = 30; // 30 days
+    const startDate = new Date('2024-06-01');
+    const currentDate = new Date();
+    const daysPassed = Math.floor((currentDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
+    
+    const dailyIncrease = (targetUsers - baseUsers) / monthsToTarget;
+    const currentUsers = Math.min(baseUsers + (dailyIncrease * daysPassed), targetUsers);
+    
+    return Math.floor(currentUsers).toLocaleString() + '+';
+  };
+
   return (
     <section className="relative py-20 px-4">
       <div className="max-w-6xl mx-auto text-center">
@@ -18,28 +33,44 @@ export default function Hero() {
         <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
           Get real-time trading signals for major binary options platforms with high accuracy rates and instant notifications.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-          <div className="flex flex-wrap justify-center gap-2">
-            <Link href="/platform/quotex">
-              <Button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-3 h-auto">
-                Quotex
-              </Button>
-            </Link>
-            <Link href="/platform/pocket-option">
-              <Button className="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 h-auto">
-                Pocket Option
-              </Button>
-            </Link>
-            <Link href="/platform/iq-option">
-              <Button className="bg-purple-500 hover:bg-purple-600 text-white font-semibold px-6 py-3 h-auto">
-                IQ Option
-              </Button>
-            </Link>
-          </div>
-          <Button variant="outline" className="border-gray-600 hover:border-gray-500 text-white px-8 py-4 h-auto">
-            <Play className="mr-2 h-4 w-4" />
-            Watch Demo
-          </Button>
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          <Link href="/platform/quotex">
+            <Button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-3 h-auto">
+              Quotex
+            </Button>
+          </Link>
+          <Link href="/platform/pocket-option">
+            <Button className="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 h-auto">
+              Pocket Option
+            </Button>
+          </Link>
+          <Link href="/platform/iq-option">
+            <Button className="bg-purple-500 hover:bg-purple-600 text-white font-semibold px-6 py-3 h-auto">
+              IQ Option
+            </Button>
+          </Link>
+          <Link href="/platform/binomo">
+            <Button className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-6 py-3 h-auto">
+              Binomo
+            </Button>
+          </Link>
+          <Link href="/platform/expert-option">
+            <Button className="bg-red-500 hover:bg-red-600 text-white font-semibold px-6 py-3 h-auto">
+              Expert Option
+            </Button>
+          </Link>
+          <Link href="/platform/olymp">
+            <Button className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold px-6 py-3 h-auto">
+              Olymp
+            </Button>
+          </Link>
+        </div>
+
+        {/* Risk Warning */}
+        <div className="mb-8 p-4 bg-red-900/20 border border-red-500/30 rounded-lg max-w-2xl mx-auto">
+          <p className="text-red-300 font-semibold text-center">
+            ⚠️ Risk Warning: Trading involves significant risk. Only use money you can afford to lose.
+          </p>
         </div>
         
         {/* Live Stats */}
@@ -57,7 +88,7 @@ export default function Hero() {
             <div className="text-sm text-gray-400">Platforms</div>
           </div>
           <div className="bg-dark-secondary p-6 rounded-xl border border-gray-700">
-            <div className="text-2xl font-bold text-yellow-400">{stats?.users || "2.4K+"}</div>
+            <div className="text-2xl font-bold text-yellow-400">{getActiveUsers()}</div>
             <div className="text-sm text-gray-400">Active Users</div>
           </div>
         </div>

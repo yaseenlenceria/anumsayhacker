@@ -5,6 +5,10 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Home from "@/pages/home";
 import PlatformPage from "@/pages/platform";
+import Pricing from "@/pages/pricing";
+import FAQ from "@/pages/faq";
+import Contact from "@/pages/contact";
+import Support from "@/pages/support";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -12,6 +16,10 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/platform/:platformName" component={PlatformPage} />
+      <Route path="/pricing" component={Pricing} />
+      <Route path="/faq" component={FAQ} />
+      <Route path="/contact" component={Contact} />
+      <Route path="/support" component={Support} />
       <Route component={NotFound} />
     </Switch>
   );

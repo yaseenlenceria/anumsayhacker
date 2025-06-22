@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "wouter";
 import { Rocket, Shield, Headphones, Play, DollarSign } from "lucide-react";
 
 export default function CTA() {
@@ -41,15 +42,13 @@ export default function CTA() {
             <Play className="mr-2 h-4 w-4" />
             Start Free Trial
           </Button>
-          <Button variant="outline" className="border-gray-600 hover:border-gray-500 text-white px-8 py-4 h-auto text-lg">
-            <DollarSign className="mr-2 h-4 w-4" />
-            View Pricing
-          </Button>
+          <Link href="/pricing">
+            <Button variant="outline" className="border-gray-600 hover:border-gray-500 text-white px-8 py-4 h-auto text-lg">
+              <DollarSign className="mr-2 h-4 w-4" />
+              View Pricing
+            </Button>
+          </Link>
         </div>
-        
-        <p className="text-sm text-gray-400 mt-6">
-          No credit card required • Cancel anytime • 30-day money-back guarantee
-        </p>
       </div>
     </section>
   );

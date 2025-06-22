@@ -49,20 +49,20 @@ export default function SignalCard({ signal, onCopy, formatTime }: SignalCardPro
       
       {/* Metrics */}
       <div className="grid grid-cols-3 gap-3 mb-4">
-        <div className="bg-black/20 rounded-lg p-2 text-center">
-          <div className={`text-xl font-bold ${
+        <div className="bg-black/30 rounded-lg p-2 text-center border border-gray-600/30">
+          <div className={`text-lg font-bold ${
             signal.direction === 'CALL' ? 'text-green-400' : 'text-red-400'
           }`}>
             {signal.strength}%
           </div>
           <div className="text-xs text-gray-400 uppercase tracking-wide">Strength</div>
         </div>
-        <div className="bg-black/20 rounded-lg p-2 text-center">
-          <div className="text-xl font-bold text-blue-400">{signal.volume}</div>
+        <div className="bg-black/30 rounded-lg p-2 text-center border border-gray-600/30">
+          <div className="text-lg font-bold text-blue-400">{signal.volume}</div>
           <div className="text-xs text-gray-400 uppercase tracking-wide">Volume</div>
         </div>
-        <div className="bg-black/20 rounded-lg p-2 text-center">
-          <div className="text-xl font-bold text-purple-400">{signal.volatility}</div>
+        <div className="bg-black/30 rounded-lg p-2 text-center border border-gray-600/30">
+          <div className="text-lg font-bold text-purple-400">{signal.volatility}</div>
           <div className="text-xs text-gray-400 uppercase tracking-wide">Risk</div>
         </div>
       </div>
