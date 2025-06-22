@@ -40,6 +40,10 @@ interface BuySellSignal {
 export default function PlatformPage() {
   const [, params] = useRoute("/platform/:platformName");
   const platformName = params?.platformName || "";
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [platformName]);
   
   const [selectedPair, setSelectedPair] = useState<CurrencyPair>('USD/PKR');
   const [selectedTimeFrame, setSelectedTimeFrame] = useState<TimeFrame>('10s');

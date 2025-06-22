@@ -1,7 +1,7 @@
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const faqs = [
   {
@@ -40,6 +40,10 @@ const faqs = [
 
 export default function FAQ() {
   const [openItems, setOpenItems] = useState<number[]>([]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const toggleItem = (index: number) => {
     setOpenItems(prev => 
