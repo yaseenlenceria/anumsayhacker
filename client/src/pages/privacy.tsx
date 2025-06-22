@@ -3,6 +3,10 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 
 export default function Privacy() {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, []);
+
   return (
     <div className="min-h-screen bg-dark-primary">
       <Header />

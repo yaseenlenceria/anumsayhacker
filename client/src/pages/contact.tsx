@@ -5,6 +5,10 @@ import { Button } from "@/components/ui/button";
 import { MessageCircle, Mail, Clock, Shield } from "lucide-react";
 
 export default function Contact() {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, []);
+
   return (
     <div className="min-h-screen bg-dark-primary">
       <Header />

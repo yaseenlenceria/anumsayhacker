@@ -19,9 +19,9 @@ export default function SignalsDashboard() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const seconds = Math.floor(Math.random() * 10) + 1;
+      const seconds = Math.floor(Math.random() * 15) + 1; // 1-15 seconds
       setLastUpdated(`${seconds} seconds ago`);
-    }, 5000);
+    }, Math.random() * 3000 + 4000); // 4-7 seconds interval
 
     return () => clearInterval(interval);
   }, []);

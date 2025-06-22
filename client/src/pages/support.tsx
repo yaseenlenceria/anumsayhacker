@@ -5,6 +5,10 @@ import { Button } from "@/components/ui/button";
 import { BookOpen, MessageCircle, Video, Users, TrendingUp, AlertTriangle } from "lucide-react";
 
 export default function Support() {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, []);
+
   return (
     <div className="min-h-screen bg-dark-primary">
       <Header />

@@ -109,11 +109,13 @@ This is a full-stack trading signals application built with React, Express.js, a
 
 ## Recent Changes
 
-- **Individual Platform Pages**: Created dedicated pages for each trading platform (Quotex, Pocket Option, Binomo, Olymp, IQ Option, Expert Option) with platform-specific signals and buy/sell indicators
-- **Live Winning Notifications**: Added animated notifications in bottom-right corner showing fake user wins with amounts and currency pairs
-- **Enhanced Navigation**: Updated header with dropdown platform menu and direct platform links in hero section
-- **Real-time Buy/Sell Signals**: Added live buy/sell signal generation with confidence levels, entry/target prices, and time frames
-- **Platform-Specific Filtering**: Each platform page filters signals by platform and provides dedicated trading interface
+- **Pakistani Localization**: Added Pakistani names and PKR currency amounts in live notifications
+- **Pricing Page**: Created comprehensive pricing with 3 plans (₨5,000, ₨10,000, ₨15,000)
+- **Complete Page Set**: Added FAQ, Support, Contact, Terms of Service, Privacy Policy pages
+- **Top Earners Section**: Aggressive marketing with Pakistani top earners showing millions earned
+- **Database Integration**: Migrated from in-memory storage to PostgreSQL with Drizzle ORM
+- **User Experience**: Fixed page navigation to start from top, randomized notifications, improved signal card design
+- **Risk Warnings**: Added appropriate risk disclaimers throughout the platform
 
 ## Changelog
 
