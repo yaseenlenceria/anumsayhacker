@@ -20,7 +20,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/login" component={Login} />
-      <Route path="/admin" component={Admin} />
+      <Route path="/123admin" component={Admin} />
       <Route path="/">
         <AuthWrapper>
           <Home />

@@ -110,7 +110,7 @@ This is a full-stack trading signals application built with React, Express.js, a
 ## Recent Changes
 
 - **Password Protection System**: Implemented access key authentication for paid users only
-- **Admin Panel**: Created admin interface at /admin to generate and manage access keys
+- **Secret Admin Panel**: Created hidden admin interface at /123admin to generate and manage access keys
 - **Login Page**: Beautiful login page with access key validation
 - **Authentication Wrapper**: All pages now require valid access keys except login and admin
 - **Key Management**: Generate keys with descriptions, expiry dates, and usage tracking

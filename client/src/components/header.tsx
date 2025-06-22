@@ -53,18 +53,11 @@ export default function Header() {
             </div>
             
             <a href="#performance" className="text-gray-300 hover:text-white transition-colors">Performance</a>
-            <div className="flex items-center space-x-4">
-              <Link href="/admin">
-                <Button variant="outline" className="border-gray-600 text-gray-300 hover:text-white">
-                  Admin
-                </Button>
-              </Link>
-              <Link href="/pricing">
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-                  View Plans
-                </Button>
-              </Link>
-            </div>
+            <Link href="/pricing">
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                View Plans
+              </Button>
+            </Link>
           </nav>
           <Button variant="ghost" size="icon" className="md:hidden text-white">
             <Menu />

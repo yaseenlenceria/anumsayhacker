@@ -106,9 +106,12 @@ export default function Admin() {
       <section className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold mb-4">Admin Panel</h1>
+            <h1 className="text-4xl font-bold mb-4">🔐 Secret Admin Panel</h1>
             <p className="text-xl text-gray-300">
               Manage access keys for premium users
+            </p>
+            <p className="text-sm text-yellow-400 mt-2">
+              ⚠️ This is a hidden admin interface - keep the URL secret!
             </p>
           </div>
 
