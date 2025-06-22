@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ArrowUp, ArrowDown, Copy } from "lucide-react";
 import { CURRENCY_PAIRS, TIME_FRAMES, type TradingSignal, type CurrencyPair, type TimeFrame } from "@/types/trading";
+import SignalCard from "@/components/signal-card";
 
 export default function SignalsDashboard() {
   const [selectedPair, setSelectedPair] = useState<CurrencyPair>('USD/PKR');
@@ -120,80 +121,15 @@ export default function SignalsDashboard() {
               </div>
             </div>
             
-            {/* Signal Cards */}
-            <div className="space-y-4">
+            {/* Enhanced Signal Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {filteredSignals.map((signal) => (
-                <div
+                <SignalCard
                   key={signal.id}
-                  className="bg-dark-primary p-6 rounded-xl border border-gray-700 hover:border-blue-500 transition-colors"
-                >
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center space-x-3">
-                      <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
-                        signal.direction === 'CALL' ? 'bg-green-500' : 'bg-red-500'
-                      }`}>
-                        {signal.direction === 'CALL' ? (
-                          <ArrowUp className="text-black text-lg font-bold" />
-                        ) : (
-                          <ArrowDown className="text-white text-lg font-bold" />
-                        )}
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-lg">{signal.pair}</h4>
-                        <p className="text-sm text-gray-400">{signal.platform} • {signal.timeFrame}</p>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <div className={`text-2xl font-bold ${
-                        signal.direction === 'CALL' ? 'text-green-500' : 'text-red-500'
-                      }`}>
-                        {signal.direction}
-                      </div>
-                      <div className="text-sm text-gray-400">{formatTime(signal.createdAt)}</div>
-                    </div>
-                  </div>
-                  
-                  <div className="grid grid-cols-3 gap-4 mb-4">
-                    <div className="text-center">
-                      <div className={`text-lg font-semibold ${
-                        signal.direction === 'CALL' ? 'text-green-500' : 'text-red-500'
-                      }`}>
-                        {signal.strength}%
-                      </div>
-                      <div className="text-xs text-gray-400">Strength</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-lg font-semibold text-blue-400">{signal.volume}</div>
-                      <div className="text-xs text-gray-400">Volume</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-lg font-semibold text-purple-400">{signal.volatility}</div>
-                      <div className="text-xs text-gray-400">Volatility</div>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-2">
-                      <span className={`px-2 py-1 text-xs rounded-full font-medium ${
-                        signal.strength >= 90 ? 'bg-red-500 text-white' : 
-                        signal.strength >= 85 ? 'bg-green-500 text-black' :
-                        'bg-yellow-600 text-white'
-                      }`}>
-                        {signal.strength >= 90 ? 'Hot' : signal.strength >= 85 ? 'New' : 'Moderate'}
-                      </span>
-                      <span className="text-xs text-gray-400">
-                        Entry Price: <span>{signal.entryPrice}</span>
-                      </span>
-                    </div>
-                    <Button 
-                      onClick={() => copySignal(signal)}
-                      className="bg-blue-600 hover:bg-blue-700 px-4 py-2 h-auto text-sm"
-                    >
-                      <Copy className="mr-1 h-3 w-3" />
-                      Copy
-                    </Button>
-                  </div>
-                </div>
+                  signal={signal}
+                  onCopy={copySignal}
+                  formatTime={formatTime}
+                />
               ))}
             </div>
             

@@ -48,24 +48,24 @@ export default function LiveNotifications() {
   }, []);
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 space-y-2 max-w-sm">
-      {notifications.map((notification, index) => (
+    <div className="fixed bottom-4 right-4 z-50 space-y-1 max-w-xs">
+      {notifications.slice(0, 2).map((notification, index) => (
         <div
           key={notification.id}
-          className={`bg-green-600 text-white p-4 rounded-lg shadow-lg border border-green-500 transform transition-all duration-500 ${
+          className={`bg-green-600/90 backdrop-blur-sm text-white p-2 rounded-md shadow-lg border border-green-500/50 transform transition-all duration-300 ${
             index === 0 ? 'animate-slide-in-right' : ''
           }`}
-          style={{ opacity: 1 - (index * 0.2) }}
+          style={{ opacity: 1 - (index * 0.3) }}
         >
           <div className="flex items-center space-x-2">
-            <CheckCircle className="h-5 w-5 text-green-200" />
-            <div className="flex-1">
+            <CheckCircle className="h-3 w-3 text-green-200 flex-shrink-0" />
+            <div className="flex-1 min-w-0">
               <div className="flex items-center justify-between">
-                <span className="font-semibold text-sm">{notification.user}</span>
-                <span className="font-bold text-green-200">{notification.amount}</span>
+                <span className="font-medium text-xs truncate">{notification.user}</span>
+                <span className="font-bold text-xs text-green-200">{notification.amount}</span>
               </div>
-              <div className="text-xs text-green-100 mt-1">
-                Won on {notification.pair} • {notification.platform}
+              <div className="text-xs text-green-100 opacity-80 truncate">
+                {notification.pair}
               </div>
             </div>
           </div>
