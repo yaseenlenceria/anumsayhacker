@@ -13,7 +13,7 @@ import BuySellSignals from "@/components/buy-sell-signals";
 
 export default function Home() {
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
 
   return (

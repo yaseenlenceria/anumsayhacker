@@ -42,7 +42,7 @@ export default function PlatformPage() {
   const platformName = params?.platformName || "";
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: 'instant' });
   }, [platformName]);
   
   const [selectedPair, setSelectedPair] = useState<CurrencyPair>('USD/PKR');

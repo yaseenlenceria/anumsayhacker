@@ -25,25 +25,32 @@ export default function LiveNotifications() {
 
   useEffect(() => {
     const generateNotification = () => {
+      // Randomize all elements
+      const randomUser = users[Math.floor(Math.random() * users.length)];
+      const randomAmount = amounts[Math.floor(Math.random() * amounts.length)];
+      const randomPair = pairs[Math.floor(Math.random() * pairs.length)];
+      const randomPlatform = platforms[Math.floor(Math.random() * platforms.length)];
+      
       const newNotification: WinNotification = {
-        id: Date.now(),
-        user: users[Math.floor(Math.random() * users.length)],
-        amount: amounts[Math.floor(Math.random() * amounts.length)],
-        pair: pairs[Math.floor(Math.random() * pairs.length)],
-        platform: platforms[Math.floor(Math.random() * platforms.length)],
+        id: Date.now() + Math.random(), // More unique IDs
+        user: randomUser,
+        amount: randomAmount,
+        pair: randomPair,
+        platform: randomPlatform,
         timestamp: new Date()
       };
 
       setNotifications(prev => [newNotification, ...prev.slice(0, 4)]);
     };
 
-    // Generate initial notification
-    generateNotification();
+    // Generate initial notification after random delay
+    const initialDelay = Math.random() * 3000 + 2000; // 2-5 seconds
+    setTimeout(() => generateNotification(), initialDelay);
 
-    // Generate new notification every 8-15 seconds
+    // Generate new notification every 6-12 seconds with random intervals
     const interval = setInterval(() => {
       generateNotification();
-    }, Math.random() * 7000 + 8000);
+    }, Math.random() * 6000 + 6000); // 6-12 seconds
 
     return () => clearInterval(interval);
   }, []);

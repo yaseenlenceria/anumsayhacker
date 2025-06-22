@@ -38,16 +38,16 @@ export default function CTA() {
         </div>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button className="bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-4 h-auto text-lg">
+          <Link href="/pricing">
+            <Button className="bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-4 h-auto text-lg">
+              <DollarSign className="mr-2 h-4 w-4" />
+              View Pricing Plans
+            </Button>
+          </Link>
+          <Button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 h-auto text-lg">
             <Play className="mr-2 h-4 w-4" />
             Start Free Trial
           </Button>
-          <Link href="/pricing">
-            <Button variant="outline" className="border-gray-600 hover:border-gray-500 text-white px-8 py-4 h-auto text-lg">
-              <DollarSign className="mr-2 h-4 w-4" />
-              View Pricing
-            </Button>
-          </Link>
         </div>
       </div>
     </section>

@@ -53,9 +53,11 @@ export default function Header() {
             </div>
             
             <a href="#performance" className="text-gray-300 hover:text-white transition-colors">Performance</a>
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-              Get Started
-            </Button>
+            <Link href="/pricing">
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                View Plans
+              </Button>
+            </Link>
           </nav>
           <Button variant="ghost" size="icon" className="md:hidden text-white">
             <Menu />

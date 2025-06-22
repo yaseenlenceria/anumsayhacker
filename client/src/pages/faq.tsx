@@ -42,7 +42,7 @@ export default function FAQ() {
   const [openItems, setOpenItems] = useState<number[]>([]);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
 
   const toggleItem = (index: number) => {
