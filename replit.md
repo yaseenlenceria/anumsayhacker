@@ -109,7 +109,7 @@ This is a full-stack trading signals application built with React, Express.js, a
 
 ## Recent Changes
 
-- **Netlify Deployment Fixed**: Corrected build command and verified deployment configuration
+- **Netlify Deployment Fixed**: Rewrote serverless function without dependencies, corrected build command
 - **Static Build Optimization**: Removed Replit dependencies from production builds
 - **GitHub Integration**: Added comprehensive deployment guide and Git configuration
 - **Serverless API**: Created Express.js functions for Netlify Functions
