@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { Link } from "wouter";
 import { BarChart, Wallet, Coins, Mountain, Brain, GraduationCap } from "lucide-react";
 import type { Platform } from "@/types/trading";
 
@@ -35,18 +36,17 @@ export default function Platforms() {
             const gradient = platformGradients[platform.name as keyof typeof platformGradients];
             
             return (
-              <div
-                key={platform.id}
-                className="bg-dark-secondary p-4 rounded-xl border border-gray-700 hover:border-blue-500 cursor-pointer transition-all group"
-              >
-                <div className="text-center">
-                  <div className={`w-12 h-12 bg-gradient-to-r ${gradient} rounded-lg mx-auto mb-3 flex items-center justify-center group-hover:scale-110 transition-transform`}>
-                    {Icon && <Icon className="text-white h-6 w-6" />}
+              <Link key={platform.id} href={`/platform/${platform.name}`}>
+                <div className="bg-dark-secondary p-4 rounded-xl border border-gray-700 hover:border-blue-500 cursor-pointer transition-all group">
+                  <div className="text-center">
+                    <div className={`w-12 h-12 bg-gradient-to-r ${gradient} rounded-lg mx-auto mb-3 flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                      {Icon && <Icon className="text-white h-6 w-6" />}
+                    </div>
+                    <h3 className="font-semibold text-white">{platform.displayName}</h3>
+                    <p className="text-xs text-gray-400 mt-1">Click to Trade</p>
                   </div>
-                  <h3 className="font-semibold text-white">{platform.displayName}</h3>
-                  <p className="text-xs text-gray-400 mt-1">Active</p>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>

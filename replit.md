@@ -107,11 +107,20 @@ This is a full-stack trading signals application built with React, Express.js, a
 - **Migrations**: Stored in `./migrations` directory
 - **Connection**: PostgreSQL via Neon serverless driver
 
+## Recent Changes
+
+- **Individual Platform Pages**: Created dedicated pages for each trading platform (Quotex, Pocket Option, Binomo, Olymp, IQ Option, Expert Option) with platform-specific signals and buy/sell indicators
+- **Live Winning Notifications**: Added animated notifications in bottom-right corner showing fake user wins with amounts and currency pairs
+- **Enhanced Navigation**: Updated header with dropdown platform menu and direct platform links in hero section
+- **Real-time Buy/Sell Signals**: Added live buy/sell signal generation with confidence levels, entry/target prices, and time frames
+- **Platform-Specific Filtering**: Each platform page filters signals by platform and provides dedicated trading interface
+
 ## Changelog
 
 ```
 Changelog:
-- June 22, 2025. Initial setup
+- June 22, 2025. Initial setup with trading signals dashboard
+- June 22, 2025. Added individual platform pages with buy/sell signals and live notifications
 ```
 
 ## User Preferences

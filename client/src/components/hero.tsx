@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "wouter";
 import { ChartLine, Play } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import type { TradingStats } from "@/types/trading";
@@ -18,10 +19,23 @@ export default function Hero() {
           Get real-time trading signals for major binary options platforms with high accuracy rates and instant notifications.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-          <Button className="bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-4 h-auto">
-            <ChartLine className="mr-2 h-4 w-4" />
-            Start Trading Now
-          </Button>
+          <div className="flex flex-wrap justify-center gap-2">
+            <Link href="/platform/quotex">
+              <Button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-3 h-auto">
+                Quotex
+              </Button>
+            </Link>
+            <Link href="/platform/pocket-option">
+              <Button className="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 h-auto">
+                Pocket Option
+              </Button>
+            </Link>
+            <Link href="/platform/iq-option">
+              <Button className="bg-purple-500 hover:bg-purple-600 text-white font-semibold px-6 py-3 h-auto">
+                IQ Option
+              </Button>
+            </Link>
+          </div>
           <Button variant="outline" className="border-gray-600 hover:border-gray-500 text-white px-8 py-4 h-auto">
             <Play className="mr-2 h-4 w-4" />
             Watch Demo
