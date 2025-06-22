@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Lock, Shield, Key, AlertTriangle } from "lucide-react";
+import { Lock, Shield, Key, AlertTriangle, Play } from "lucide-react";
 
 export default function Login() {
   const [accessKey, setAccessKey] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isTrialLoading, setIsTrialLoading] = useState(false);
   const [error, setError] = useState("");
+  const [trialMessage, setTrialMessage] = useState("");
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
@@ -39,6 +41,42 @@ export default function Login() {
       setError('Connection error. Please try again.');
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleFreeTrial = async () => {
+    setIsTrialLoading(true);
+    setError("");
+    setTrialMessage("");
+
+    try {
+      const response = await fetch('/api/auth/free-trial', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const data = await response.json();
+      
+      if (response.ok) {
+        // Automatically log in with the trial key
+        localStorage.setItem('accessKey', data.accessKey);
+        setTrialMessage(`🎉 ${data.message} Redirecting...`);
+        setTimeout(() => {
+          window.location.href = '/';
+        }, 2000);
+      } else {
+        if (data.remainingTime) {
+          setError(`Free trial already used. ${data.remainingTime} minutes remaining on existing trial.`);
+        } else {
+          setError(data.message || 'Failed to start free trial');
+        }
+      }
+    } catch (err) {
+      setError('Connection error. Please try again.');
+    } finally {
+      setIsTrialLoading(false);
     }
   };
 
@@ -97,23 +135,56 @@ export default function Login() {
               </div>
             )}
 
-            <Button
-              type="submit"
-              disabled={isLoading || !accessKey.trim()}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 font-semibold"
-            >
-              {isLoading ? (
-                <>
-                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
-                  Validating...
-                </>
-              ) : (
-                <>
-                  <Shield className="mr-2 h-4 w-4" />
-                  Access Platform
-                </>
-              )}
-            </Button>
+            {trialMessage && (
+              <div className="bg-green-900/20 border border-green-500/50 rounded-lg p-3">
+                <div className="flex items-center space-x-2">
+                  <Shield className="h-4 w-4 text-green-400" />
+                  <p className="text-green-300 text-sm">{trialMessage}</p>
+                </div>
+              </div>
+            )}
+
+            <div className="space-y-3">
+              <Button
+                type="submit"
+                disabled={isLoading || !accessKey.trim()}
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 font-semibold"
+              >
+                {isLoading ? (
+                  <>
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
+                    Validating...
+                  </>
+                ) : (
+                  <>
+                    <Shield className="mr-2 h-4 w-4" />
+                    Access Platform
+                  </>
+                )}
+              </Button>
+
+              <div className="text-center">
+                <p className="text-gray-400 text-sm mb-3">Or try for free:</p>
+                <Button
+                  type="button"
+                  onClick={handleFreeTrial}
+                  disabled={isTrialLoading}
+                  className="w-full bg-green-600 hover:bg-green-700 text-white py-3 font-semibold"
+                >
+                  {isTrialLoading ? (
+                    <>
+                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
+                      Starting Trial...
+                    </>
+                  ) : (
+                    <>
+                      <Play className="mr-2 h-4 w-4" />
+                      START FREE TRIAL NOW! (20 mins)
+                    </>
+                  )}
+                </Button>
+              </div>
+            </div>
           </form>
 
           {/* Info */}

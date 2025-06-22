@@ -41,6 +41,51 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Free trial endpoint
+  app.post("/api/auth/free-trial", async (req, res) => {
+    try {
+      const userAgent = req.headers['user-agent'];
+      const ipAddress = req.ip || req.connection.remoteAddress;
+      
+      // Check if this IP already has an active trial key
+      const existingKeys = await authStorage.getAllAccessKeys();
+      const existingTrialKey = existingKeys.find(key => 
+        key.ipAddress === ipAddress && 
+        key.description?.includes('Free Trial') && 
+        key.isActive &&
+        key.expiresAt && key.expiresAt > new Date()
+      );
+      
+      if (existingTrialKey) {
+        return res.status(429).json({ 
+          success: false, 
+          message: "Free trial already used from this IP address",
+          remainingTime: Math.max(0, Math.floor((existingTrialKey.expiresAt.getTime() - Date.now()) / 1000 / 60))
+        });
+      }
+      
+      // Generate 20-minute trial key
+      const expiresAt = new Date(Date.now() + 20 * 60 * 1000); // 20 minutes
+      const trialKey = await authStorage.generateAccessKey(
+        `Free Trial - IP: ${ipAddress}`,
+        expiresAt
+      );
+      
+      // Update with usage info immediately
+      await authStorage.updateKeyUsage(trialKey.key, userAgent, ipAddress);
+      
+      res.json({ 
+        success: true, 
+        accessKey: trialKey.key,
+        expiresAt: trialKey.expiresAt,
+        message: "20-minute free trial activated!"
+      });
+    } catch (error) {
+      console.error("Error generating free trial key:", error);
+      res.status(500).json({ success: false, message: "Server error" });
+    }
+  });
+
   // Admin endpoints
   app.get("/api/admin/keys", async (req, res) => {
     try {

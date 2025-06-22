@@ -113,6 +113,7 @@ This is a full-stack trading signals application built with React, Express.js, a
 - **Secret Admin Panel**: Created hidden admin interface at /123admin to generate and manage access keys
 - **Login Page**: Beautiful login page with access key validation
 - **Authentication Wrapper**: All pages now require valid access keys except login and admin
+- **Free Trial System**: 20-minute trials with IP-based restrictions and automatic login
 - **Key Management**: Generate keys with descriptions, expiry dates, and usage tracking
 - **Pakistani Localization**: Added Pakistani names and PKR currency amounts in live notifications
 - **Complete Page Set**: Added FAQ, Support, Contact, Terms of Service, Privacy Policy pages

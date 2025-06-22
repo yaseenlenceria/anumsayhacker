@@ -44,10 +44,12 @@ export default function CTA() {
               View Pricing Plans
             </Button>
           </Link>
-          <Button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 h-auto text-lg">
-            <Play className="mr-2 h-4 w-4" />
-            Start Free Trial
-          </Button>
+          <a href="/login">
+            <Button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 h-auto text-lg">
+              <Play className="mr-2 h-4 w-4" />
+              Start Free Trial
+            </Button>
+          </a>
         </div>
       </div>
     </section>

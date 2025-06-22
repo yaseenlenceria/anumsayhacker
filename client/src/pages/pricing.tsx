@@ -219,9 +219,11 @@ export default function Pricing() {
             <p className="text-gray-300 mb-6">
               Limited to one trial per IP address. No credit card required!
             </p>
-            <Button className="bg-yellow-500 hover:bg-yellow-600 text-black px-8 py-3 text-lg font-bold">
-              START FREE TRIAL NOW!
-            </Button>
+            <a href="/login">
+              <Button className="bg-yellow-500 hover:bg-yellow-600 text-black px-8 py-3 text-lg font-bold">
+                START FREE TRIAL NOW!
+              </Button>
+            </a>
           </div>
         </div>
       </section>
